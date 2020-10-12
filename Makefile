@@ -14,7 +14,7 @@ grille.o : grille.c grille.h
 	gcc -c grille.c
 
 clean : 
-	rm *.o
+	rm *.o output
 
 dist :
-	tar -jcvf prog.tar.xz main.c jeu.c io.c grille.c Makefile Doxyfile
+	tar -jcvf AchrafChemaou-GoL.tar.xz main.c jeu.c io.c grille.c Makefile Doxyfile

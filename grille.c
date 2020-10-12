@@ -31,11 +31,24 @@ void copie_grille (grille gs, grille gd){
 }
 
 void alloue_grille (int l, int c, grille* g){
-
+	int i=0,j=0;
+    g->nbl = l;
+    g->nbc = c;
+    g->cellules = malloc(l*sizeof(int*));
+    
+    for(;i<l;i++){
+        g->cellules[i]=malloc(c*sizeof(int));
+        for(;j<c;j++)
+            g->cellules[i][j]=0;
+    }
 }
 
 void libere_grille (grille* g){
-	
+	int i = 0;
+	for(;i<(g->nbl);i++){
+		free(g->cellules[i]);
+	}
+	free(g->cellules);
 }
 
 

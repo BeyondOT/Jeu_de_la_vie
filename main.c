@@ -1,3 +1,7 @@
+/**
+ * @file main.c
+ * @author Achraf 
+ */
 #include <stdio.h>
 
 #include "grille.h"

@@ -1,3 +1,7 @@
+/**
+ * @file grille.c
+ * @author Achraf
+ */
 #include "grille.h"
 
 void init_grille_from_file (char * filename, grille* g){

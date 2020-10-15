@@ -1,3 +1,7 @@
+/**
+ * @file io.c
+ * @author Achraf
+ */
 #include "io.h"
 
 void affiche_trait (int c){
@@ -27,8 +31,8 @@ void affiche_grille (grille g){
 	return;
 }
 
-void efface_grille (grille g){
-	printf("\n\e[%dA",g.nbl*2 + 5); 
+void efface_grille (){
+	printf("\e[H\e[2J");
 }
 
 void debut_jeu(grille *g, grille *gc){
@@ -39,7 +43,7 @@ void debut_jeu(grille *g, grille *gc){
 			case '\n' : 
 			{ // touche "entree" pour évoluer
 				evolue(g,gc);
-				efface_grille(*g);
+				system("clear");
 				affiche_grille(*g);
 				break;
 			}

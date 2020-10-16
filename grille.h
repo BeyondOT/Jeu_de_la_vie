@@ -16,7 +16,7 @@
  * nbl qui est le nombre de colonnes
  * cellules qui est un tableau de tableau
  */
-typedef struct {int nbl; int nbc; int cycle; int temps; int vieille;int** cellules;} grille;
+typedef struct {int nbl; int nbc; int** cellules;} grille;
 
 /**
  * @brief Alloue et initialise les cellules de la structure grille
@@ -68,7 +68,6 @@ static inline void set_morte(int i, int j, grille g){g.cellules[i][j] = 0;}
  */
 static inline int est_vivante(int i, int j, grille g){return g.cellules[i][j] == 1;}
 
-// recopie gs dans gd (sans allocation)
 
 /**
  * @brief Recopie la grille gs dans la grille gd (sans allocation)

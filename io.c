@@ -20,10 +20,10 @@ void affiche_ligne (int c, int* ligne){
 }
 
 void affiche_grille (grille g){
-	int i, l=g.nbl, c=g.nbc, t=g.temps, cycle=g.cycle, v=g.vieille;
-	printf("\nVoisinage cyclique : ");
+	int i, l=g.nbl, c=g.nbc;
 
-    if (cycle == 0){
+	printf("\nVoisinage cyclique : ");
+    if (!cyclique){
         printf("désactivé\n"); 
     }
     else {
@@ -32,20 +32,21 @@ void affiche_grille (grille g){
 
     printf("\nVieillissement : ");  
 
-    if (v == 0){
+    if (!vieillissement){
         printf("désactivé\n"); 
     }
     else {
         printf("activé\n"); 
     }
-    printf("\nTemps d'évolution de la grille : %d \n", t);
+    printf("\nTemps d'évolution de la grille : %d \n", tpsEvolution);
 	printf("\n");
 	affiche_trait(c);
 	for (i=0; i<l; ++i) {
 		affiche_ligne(c, g.cellules[i]);
 		affiche_trait(c);
 	}	
-	printf("\n"); 
+	printf("\n");
+	tpsEvolution++;
 	return;
 }
 
@@ -63,7 +64,13 @@ void debut_jeu(grille *g, grille *gc){
 				evolue(g,gc);
 				system("clear");
 				affiche_grille(*g);
-				g->temps += 1;
+				
+				break;
+			}
+			case 'c' :
+			{
+				if(!cyclique) cyclique = 1;
+				else cyclique = 0;
 				break;
 			}
 			case 'n' : 
@@ -74,6 +81,7 @@ void debut_jeu(grille *g, grille *gc){
 				libere_grille(gc);
 				init_grille_from_file(filename, g);
 				alloue_grille(g->nbl, g->nbc, gc);
+				tpsEvolution = 1;
 
 				break;
 			}

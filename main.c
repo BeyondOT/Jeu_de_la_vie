@@ -8,6 +8,10 @@
 #include "io.h"
 #include "jeu.h"
 
+int cyclique = 0;
+int tpsEvolution = 1;
+int vieillissement = 0;
+
 int main (int argc, char ** argv) {
 	
 	if (argc != 2 )
@@ -20,7 +24,6 @@ int main (int argc, char ** argv) {
 	init_grille_from_file(argv[1],&g);
 	alloue_grille (g.nbl, g.nbc, &gc);
 	affiche_grille(g);
-	g.temps += 1;
 	debut_jeu(&g, &gc);
 
 	libere_grille(&g);

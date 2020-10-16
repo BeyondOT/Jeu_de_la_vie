@@ -9,6 +9,12 @@
 #include "grille.h"
 #include "jeu.h"
 
+extern int tpsEvolution;// Variable globale du temps d'évolution
+
+extern int cyclique;// Cyclique ou non
+
+extern int vieillissement; // Est-ce que les cellules vieillissent
+
 /**
  * @brief affiche un trait horizontale c fois
  * 

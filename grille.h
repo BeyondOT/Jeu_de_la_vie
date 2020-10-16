@@ -16,7 +16,7 @@
  * nbl qui est le nombre de colonnes
  * cellules qui est un tableau de tableau
  */
-typedef struct {int nbl; int nbc; int** cellules;} grille;
+typedef struct {int nbl; int nbc; int cycle; int temps; int vieille;int** cellules;} grille;
 
 /**
  * @brief Alloue et initialise les cellules de la structure grille

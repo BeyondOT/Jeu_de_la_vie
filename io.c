@@ -20,7 +20,25 @@ void affiche_ligne (int c, int* ligne){
 }
 
 void affiche_grille (grille g){
-	int i, l=g.nbl, c=g.nbc;
+	int i, l=g.nbl, c=g.nbc, t=g.temps, cycle=g.cycle, v=g.vieille;
+	printf("\nVoisinage cyclique : ");
+
+    if (cycle == 0){
+        printf("désactivé\n"); 
+    }
+    else {
+        printf("activé\n");
+    }
+
+    printf("\nVieillissement : ");  
+
+    if (v == 0){
+        printf("désactivé\n"); 
+    }
+    else {
+        printf("activé\n"); 
+    }
+    printf("\nTemps d'évolution de la grille : %d \n", t);
 	printf("\n");
 	affiche_trait(c);
 	for (i=0; i<l; ++i) {
@@ -45,6 +63,7 @@ void debut_jeu(grille *g, grille *gc){
 				evolue(g,gc);
 				system("clear");
 				affiche_grille(*g);
+				g->temps += 1;
 				break;
 			}
 			case 'n' : 

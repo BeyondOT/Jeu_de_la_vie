@@ -1,20 +1,32 @@
-output : main.o jeu.o io.o grille.o
-	gcc -o output main.o jeu.o io.o grille.o -lm
+.PHONY: all doc clean dist
 
-main.o : main.c jeu.h io.h grille.h
-	gcc -c main.c
+CC = gcc
+OPATH = obj/
+DOCGEN=doxygen
+CPPFLAGS += -I include
+CFLAGS += -Wall
 
-jeu.o : jeu.c jeu.h
-	gcc -c jeu.c
+TARNAME = AchrafChemaou-GoL-2_0.tar.xz
 
-io.o : io.c io.h
-	gcc -c io.c
+vpath %.c src/
+vpath %.h include/
 
-grille.o : grille.c grille.h
-	gcc -c grille.c
+all : main
 
-clean : 
-	rm *.o output
+main : $(addprefix $(OPATH), main.o grille.o io.o jeu.o)
+	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
+
+$(OPATH)%.o : %.c | $(OPATH)
+	$(CC) $(CPPFLAGS) $(CFLAGS) -c -o $@ $<
+
+$(OPATH):
+	mkdir $@
+
+doc :
+	$(DOCGEN)
+
+clean :
+	$(RM) -r doc/ $(OPATH) main $(TARNAME)
 
 dist :
-	tar -jcvf AchrafChemaou-GoL.tar.xz main.c jeu.c io.c grille.c Makefile Doxyfile
+	tar -jcvf $(TARNAME) src include README.md Makefile Doxyfile

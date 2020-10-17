@@ -14,7 +14,7 @@ vpath %.h include/
 all : main
 
 main : $(addprefix $(OPATH), main.o grille.o io.o jeu.o)
-	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
+	$(CC) $(CFLAGS) -o $@ $^
 
 $(OPATH)%.o : %.c | $(OPATH)
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c -o $@ $<

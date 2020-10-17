@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <assert.h>
 
+
 // structure grille : nombre de lignes, nombre de colonnes, tableau de tableau de cellules
 /**
  * @brief Structure de la grille qui contiernt
@@ -16,7 +17,14 @@
  * nbl qui est le nombre de colonnes
  * cellules qui est un tableau de tableau
  */
-typedef struct {int nbl; int nbc; int** cellules;} grille;
+typedef struct {
+    int nbl;            /*!< Le nombre de lignes. */
+    int nbc;            /*!< Le nombre de colonnes */
+    int** cellules;     /*!< tableu de tableau  */
+    int vielliessement; /*!<  */
+    int tpsEvolution;   /* */
+    int cycle;          /* */
+    } grille;
 
 /**
  * @brief Alloue et initialise les cellules de la structure grille
@@ -66,8 +74,20 @@ static inline void set_morte(int i, int j, grille g){g.cellules[i][j] = 0;}
  * @param j numéro de la colonne de la cellule
  * @param g la grille 
  */
-static inline int est_vivante(int i, int j, grille g){return g.cellules[i][j] == 1;}
+static inline int est_vivante(int i, int j, grille g){return g.cellules[i][j] >= 1;}
 
+/** 
+ *  @fn static inline vieillir(int i, int j, grille g)
+ *  @brief vieillit la cellule (i,j) de la grille g de 1.
+ * 
+ *  @param g une grille de cellules et ses dimensions.
+ *  @param i coordonnée sur l’axe des abscisses.
+ *  @param j coordonnée sur l’axe des ordonnées.
+ */ 
+static inline void vieillir (int i, int j, grille g) {g.cellules[i][j] += 1;}
+
+// teste si la cellule (i,j) de la grille g est vieille
+static inline int est_vieille (int i, int j, grille g){return g.cellules[i][j] >= 8;}
 
 /**
  * @brief Recopie la grille gs dans la grille gd (sans allocation)

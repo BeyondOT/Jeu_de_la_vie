@@ -4,13 +4,9 @@
  */
 #include <stdio.h>
 
-#include "grille.h"
-#include "io.h"
-#include "jeu.h"
-
-int cyclique = 0;
-int tpsEvolution = 1;
-int vieillissement = 0;
+#include "../include/grille.h"
+#include "../include/io.h"
+#include "../include/jeu.h"
 
 int main (int argc, char ** argv) {
 	

@@ -2,7 +2,7 @@
  * @file io.c
  * @author Achraf
  */
-#include "io.h"
+#include "../include/io.h"
 
 void affiche_trait (int c){
 	int i;
@@ -12,9 +12,9 @@ void affiche_trait (int c){
 }
 
 void affiche_ligne (int c, int* ligne){
-	int i;
-	for (i=0; i<c; ++i) 
-		if (ligne[i] == 0 ) printf ("|   "); else printf ("| O ");
+	for (int j=0; j<c; j++){
+		if (ligne[j] == 0 ) printf ("|   "); else printf ("| %d ", ligne[j]);
+	}
 	printf("|\n");
 	return;
 }
@@ -22,8 +22,8 @@ void affiche_ligne (int c, int* ligne){
 void affiche_grille (grille g){
 	int i, l=g.nbl, c=g.nbc;
 
-	printf("\nVoisinage cyclique : ");
-    if (!cyclique){
+	printf("\nVoisinage g->cycle : ");
+    if (!g.cycle){
         printf("désactivé\n"); 
     }
     else {
@@ -32,13 +32,13 @@ void affiche_grille (grille g){
 
     printf("\nVieillissement : ");  
 
-    if (!vieillissement){
+    if (!g.vielliessement){
         printf("désactivé\n"); 
     }
     else {
         printf("activé\n"); 
     }
-    printf("\nTemps d'évolution de la grille : %d \n", tpsEvolution);
+    printf("\nTemps d'évolution de la grille : %d \n", g.tpsEvolution);
 	printf("\n");
 	affiche_trait(c);
 	for (i=0; i<l; ++i) {
@@ -46,7 +46,6 @@ void affiche_grille (grille g){
 		affiche_trait(c);
 	}	
 	printf("\n");
-	tpsEvolution++;
 	return;
 }
 
@@ -61,16 +60,22 @@ void debut_jeu(grille *g, grille *gc){
 		switch (c) {
 			case '\n' : 
 			{ // touche "entree" pour évoluer
+				g->tpsEvolution ++;
 				evolue(g,gc);
 				system("clear");
 				affiche_grille(*g);
 				
 				break;
 			}
+			case 'v':{
+				if(!g->vielliessement) g->vielliessement = 1;
+				else g->vielliessement = 0;
+				break;
+			}
 			case 'c' :
 			{
-				if(!cyclique) cyclique = 1;
-				else cyclique = 0;
+				if(!g->cycle) g->cycle = 1;
+				else g->cycle = 0;
 				break;
 			}
 			case 'n' : 
@@ -81,7 +86,7 @@ void debut_jeu(grille *g, grille *gc){
 				libere_grille(gc);
 				init_grille_from_file(filename, g);
 				alloue_grille(g->nbl, g->nbc, gc);
-				tpsEvolution = 1;
+				g->tpsEvolution = 1;
 
 				break;
 			}

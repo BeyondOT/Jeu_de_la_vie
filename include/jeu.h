@@ -7,10 +7,6 @@
 
 #include "grille.h"
 
-extern int tpsEvolution; /// @def tpsEvolution
-extern int cyclique; /// @def cyclique
-extern int vieillissement; /// @def vieillissement
-
 /**
  * @brief modulo modifié pour traiter correctement les bords i=0 et j=0
  * dans le calcul des voisins avec bords cycliques

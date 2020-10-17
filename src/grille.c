@@ -2,7 +2,7 @@
  * @file grille.c
  * @author Achraf
  */
-#include "grille.h"
+#include "../include/grille.h"
 
 void init_grille_from_file (char * filename, grille* g){
 	FILE * pfile = NULL;
@@ -36,6 +36,9 @@ void copie_grille (grille gs, grille gd){
 
 void alloue_grille (int l, int c, grille* g){
 	int i=0,j=0;
+	g->cycle = 0;
+	g->vielliessement = 0;
+	g->tpsEvolution = 1;
     g->nbl = l;
     g->nbc = c;
     g->cellules = malloc(l*sizeof(int*));
@@ -54,5 +57,6 @@ void libere_grille (grille* g){
 	}
 	free(g->cellules);
 }
+
 
 

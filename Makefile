@@ -22,7 +22,7 @@ $(OPATH)%.o : %.c | $(OPATH)
 $(OPATH):
 	mkdir $@
 
-doc :
+docs :
 	$(DOCGEN)
 
 clean :

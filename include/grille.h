@@ -74,6 +74,21 @@ static inline void set_morte(int i, int j, grille g){g.cellules[i][j] = 0;}
  * @param j numéro de la colonne de la cellule
  * @param g la grille 
  */
+
+static inline void set_non_viable (int i, int j, grille g){g.cellules[i][j] = -1;}
+
+/** 
+ *  @fn static inline void set_morte(int i, int j, grille g)
+ *  @brief Rend morte la cellule (i,j) de la grille g.
+ * 
+ *  @param g Une grille de cellules et ses dimensions.
+ *  @param i Coordonnée sur l’axe des abscisses.
+ *  @param j Coordonnée sur l’axe des ordonnées.
+ */
+
+
+static inline int est_viable (int i, int j, grille g){return g.cellules[i][j] != -1;}
+
 static inline int est_vivante(int i, int j, grille g){return g.cellules[i][j] >= 1;}
 
 /** 

@@ -13,7 +13,13 @@ void affiche_trait (int c){
 
 void affiche_ligne (int c, int* ligne){
 	for (int j=0; j<c; j++){
-		if (ligne[j] == 0 ) printf ("|   "); else printf ("| %d ", ligne[j]);
+		if (ligne[j] == 0 ){
+			printf ("|   ");
+		}else if(ligne[j] == -1){
+			printf ("| X ");
+		}else{
+			printf ("| %d ", ligne[j]);
+		}
 	}
 	printf("|\n");
 	return;

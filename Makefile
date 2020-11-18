@@ -1,32 +1,52 @@
-.PHONY: all doc clean dist
+.PHONY: docs clean dist run
 
-CC = gcc
-OPATH = obj/
-DOCGEN=doxygen
-CPPFLAGS += -I include
-CFLAGS += -Wall
-
+TARGET = JeuDeVie
 TARNAME = AchrafChemaou-GoL-2_0.tar.xz
 
-vpath %.c src/
-vpath %.h include/
+SRCDIR = src
+OBJDIR = obj
+BINDIR = bin
+INCLUDIR = include
+DOCGEN = doxygen
 
-all : main
+LCC= gcc -o
+CC = gcc
+FLAGS = -Wall
+LFLAGS = -Wall
+LIBDIR = lib
+ 
+SOURCE = $(SRCDIR)/io.c $(SRCDIR)/main.c
+LIBSRC = $(SRCDIR)/grille.c $(SRCDIR)/jeu.c
+INCLUDE := $(wildcard $(INCLUDIR)/*.h)
 
-main : $(addprefix $(OPATH), main.o grille.o io.o jeu.o)
-	$(CC) $(CFLAGS) -o $@ $^
+OBJECT := $(SOURCE:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 
-$(OPATH)%.o : %.c | $(OPATH)
-	$(CC) $(CPPFLAGS) $(CFLAGS) -c -o $@ $<
+OBJECTS_SRC = io.o main.o
+OBJECTS_LIB = $(LIBSRC:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
+LIB = $(LIBDIR)/libjeu.a
 
-$(OPATH):
-	mkdir $@
+$(BINDIR)/$(TARGET): $(OBJECT) $(LIB)
+	mkdir -p $(BINDIR)
+	@$(LCC) $@ $(OBJECT) $(LIB) $(LFLAGS)
+
+$(OBJECT): $(OBJDIR)/%.o : $(SRCDIR)/%.c
+	mkdir -p $(OBJDIR)
+	@$(CC) $(FLAGS) -c $< -o $@
+
+$(LIB): $(OBJECTS_LIB)
+	mkdir -p $(LIBDIR)
+	ar -rcs $(LIB) $(OBJECTS_LIB)
+
+
+$(OBJECTS_LIB): $(OBJDIR)/%.o : $(SRCDIR)/%.c
+	@$(CC) $(FLAGS) -c $< -o $@
 
 docs :
 	$(DOCGEN)
 
 clean :
-	$(RM) -r doc/ $(OPATH) main $(TARNAME)
-
+	$(RM) -r doc/ $(OBJDIR) $(BINDIR) $(LIBDIR) $(TARNAME)
 dist :
 	tar -jcvf $(TARNAME) src include README.md Makefile Doxyfile
+run: 
+	./bin/JeuDeVie ./grilles/grille5.txt

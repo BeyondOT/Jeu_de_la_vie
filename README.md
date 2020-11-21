@@ -6,16 +6,22 @@ Ce projet est un jeu qui consiste à lancer une grille qui aura des cellules viv
 
 Pour commencer, il faut extraire les fichiers du zip que vous venez de télécharger et puis utiliser la commande make pour créer l'éxecutable.
 
+Si vous voulez exécuter en mode TEXTE précisez le avec la commande 
+* make MODE=TEXTE
+
+Veuillez vérifier que vous avez un dossier grilles avec les fichiers de vos grilles nommé de tel manière à ce que le chemin soit équivalent à :
+
+grilles/grille'n'.txt    (n et le numéro de la grille)
+
 ## Démarrage
 
-Pour lancer le jeu il suffit d'utiliser la commande ./main suivi du chemin de la grille que vous voulez utiliser. 
-_exemple:_
-* ./main grilles/grille1.txt
-
+Pour lancer le jeu il suffit d'utiliser la commande make run.
+Par défault le jeu va lancer la grille1.txt 
+vous pouvez changer cela dans le Makefile.
 
 ## Versions
-**Dernière version stable :** 2.0
-**Dernière version :** 2.0
+**Dernière version stable :** 4.0
+**Dernière version :** 4.0
 Liste des versions : [Cliquer pour afficher](https://git.unistra.fr/chemaouelfihri/jeu_de_la_vie/-/tags)
 
 ## Auteurs

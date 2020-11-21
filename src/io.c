@@ -187,7 +187,7 @@ void affiche_param (cairo_t *cr, grille *g){
 	}
 
 	cairo_move_to(cr, 10, 450);
-  	cairo_show_text(cr, "- - - - - - - - - - - - - - - - - - - - - - - -");
+  	cairo_show_text(cr, "- - - - - - - - - - - - - - - - - - - - - - - - ");
 
 	utf8 = "Pour faire évoluer vite 'b'.";
 			cairo_move_to (cr, 10, 475);

@@ -59,7 +59,7 @@ void affiche_block (int c, int x, int y, int w, int h, cairo_t *cr){
 void affiche_grille (grille g, cairo_t *cr){
 	int i, j, l=g.nbl, c=g.nbc;
 
-	int x = 10,
+	int x = 260,
 	    y = 110;
 	
 	int block_w = (500 - 20)/c;
@@ -94,7 +94,7 @@ void affiche_param (cairo_t *cr, grille *g){
 
 	cairo_set_line_width (cr, 2);
 	cairo_set_source_rgb (cr, 0.67, 0.84, 0.90);
-	cairo_rectangle (cr, 500, 0, 250, 600);
+	cairo_rectangle (cr, 0, 0, 250, 600);
 	cairo_fill (cr);
 
 	cairo_set_source_rgb (cr, 0, 0, 0);
@@ -108,7 +108,7 @@ void affiche_param (cairo_t *cr, grille *g){
 	utf8 = "Paramètres";
 	
 	cairo_text_extents (cr, utf8, &extents);
-	x = 625.0-(extents.width/2 + extents.x_bearing);
+	x = 125.0-(extents.width/2 + extents.x_bearing);
 	y = 50.0-(extents.height/2 + extents.y_bearing);
 	cairo_move_to (cr, x, y);
 	cairo_show_text (cr, utf8);
@@ -120,85 +120,85 @@ void affiche_param (cairo_t *cr, grille *g){
 		CAIRO_FONT_WEIGHT_NORMAL);
 
 	utf8 = "Temps d'évolution : ";
-	cairo_move_to (cr, 510, 100);
+	cairo_move_to (cr, 10, 100);
 	cairo_show_text (cr, utf8);
 
-	cairo_move_to (cr, 670, 100);
+	cairo_move_to (cr, 160, 100);
 	sprintf (buff, "%d", g->tpsEvolution);
 	cairo_show_text (cr, buff);
 
-	cairo_move_to(cr, 510, 125);
+	cairo_move_to(cr, 10, 125);
   	cairo_show_text(cr, "- - - - - - - - - - - - - - - - - - - - - - - -");
 
 	utf8 = "Mode Cyclique :";
-	cairo_move_to (cr, 510, 150);
+	cairo_move_to (cr, 10, 150);
 	cairo_show_text (cr, utf8);
 
-	cairo_move_to (cr, 670, 150);
+	cairo_move_to (cr, 160, 150);
 	sprintf(buff, "%s", (g->cycle) ? "Actif":"Inactif");
 	cairo_show_text (cr, buff);
 
 	utf8 = "(Appuyer sur 'c' pour changer)";
-	cairo_move_to (cr, 510, 175);
+	cairo_move_to (cr, 10, 175);
 	cairo_show_text (cr, utf8);
 
 	utf8 = "Vielliessement :";
-	cairo_move_to (cr, 510, 225);
+	cairo_move_to (cr, 10, 225);
 	cairo_show_text (cr, utf8);
 
-	cairo_move_to (cr, 670, 225);
+	cairo_move_to (cr, 160, 225);
 	sprintf(buff, "%s", (g->vielliessement) ? "Actif":"Inactif");
 	cairo_show_text (cr, buff);
 
 	utf8 = "(Appuyer sur 'v' pour changer)";
-	cairo_move_to (cr, 510, 250);
+	cairo_move_to (cr, 10, 250);
 	cairo_show_text (cr, utf8);
 
 	utf8 = "Oscillation :";
-	cairo_move_to (cr, 510, 300);
+	cairo_move_to (cr, 10, 300);
 	cairo_show_text (cr, utf8);
 
-	cairo_move_to (cr, 670, 300);
+	cairo_move_to (cr, 160, 300);
 	sprintf(buff, "%s", (g->oscillation) ? "Oui":"Non");
 	cairo_show_text (cr, buff);
 
 	utf8 = "(Appuyer sur 'o' pour changer)";
-	cairo_move_to (cr, 510, 325);
+	cairo_move_to (cr, 10, 325);
 	cairo_show_text (cr, utf8);
 
     if (g->oscillation){
 
         utf8 = "Période :";
-		cairo_move_to (cr, 510, 375);
+		cairo_move_to (cr, 10, 375);
 		cairo_show_text (cr, utf8);
 	
-		cairo_move_to (cr, 670, 375);
+		cairo_move_to (cr, 160, 375);
 		sprintf(buff, "%d", (g->oscillation-1));
 		cairo_show_text (cr, buff);
 		
 
 		utf8 = "Correspondance :";
-		cairo_move_to (cr, 510, 425);
+		cairo_move_to (cr, 10, 425);
 		cairo_show_text (cr, utf8);
 	
-		cairo_move_to (cr, 670, 425);
+		cairo_move_to (cr, 160, 425);
 		sprintf(buff, "%s", ((g->oscillation-1) ? "Non":"Oui"));
 		cairo_show_text (cr, buff);	
 	}
 
-	cairo_move_to(cr, 510, 450);
+	cairo_move_to(cr, 10, 450);
   	cairo_show_text(cr, "- - - - - - - - - - - - - - - - - - - - - - - -");
 
 	utf8 = "Pour faire évoluer vite 'b'.";
-			cairo_move_to (cr, 510, 475);
+			cairo_move_to (cr, 10, 475);
 			cairo_show_text (cr, utf8);
 
 	utf8 = "Pour changer la grille 'n'.";
-		cairo_move_to (cr, 510, 525);
+		cairo_move_to (cr, 10, 525);
 		cairo_show_text (cr, utf8);
 	
 	utf8 = "Pour quitter : 'clic droit'";
-		cairo_move_to (cr, 510, 575);
+		cairo_move_to (cr, 10, 575);
 		cairo_show_text (cr, utf8);
 	
 	return; 
@@ -219,7 +219,7 @@ void affiche_intro (cairo_t *cr){
 
 	cairo_set_font_size (cr, 50);
 	cairo_text_extents (cr, utf8, &extents);
-	x = 250.0-(extents.width/2 + extents.x_bearing);
+	x = 500.0-(extents.width/2 + extents.x_bearing);
 	y = 50.0-(extents.height/2 + extents.y_bearing);
 
 	cairo_move_to (cr, x, y);

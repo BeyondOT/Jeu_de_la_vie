@@ -1,5 +1,6 @@
 /**
  * @file io.h
+ * @brief Fonctions de l'interface en mode texte
  * @author Achraf 
  */
 #ifndef __IO_H
@@ -11,7 +12,7 @@
 #include "jeu.h"
 
 /**
- * @brief affiche un trait horizontale c foiss
+ * @brief affiche un trait horizontale c fois
  * 
  * @param c nombre de traits à afficher
  */

@@ -24,6 +24,7 @@ typedef struct {
     int vielliessement; /*!<  */
     int tpsEvolution;   /* */
     int cycle;          /* */
+    int oscillation; 
     } grille;
 
 /**

@@ -47,6 +47,24 @@ int compte_voisins_vivants_nc(int i, int j, grille g){
 	return v;
 }
 
+int meme_grille (grille *g, grille *go){
+
+	int i, j, l=g->nbl, c=g->nbc, v=1;
+
+        for (i=0; i<l; i++){
+		for (j=0; j<c; j++){
+			if ( 
+			(( g->cellules[i][j] > 0 ) && (go->cellules[i][j] <= 0 )) ||
+			( ( g->cellules[i][j] <= 0 ) && (go->cellules[i][j] > 0 ) ) 
+			){
+					v=0;
+			}
+		}
+	}
+
+	return v;
+}
+
 void evolue (grille *g, grille *gc){
 	copie_grille (*g,*gc); // copie temporaire de la grille
 	int l=g->nbl, c = g->nbc,v;

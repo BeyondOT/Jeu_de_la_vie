@@ -1,5 +1,7 @@
 /**
  * @file main_mode_texte.c
+ * @brief fichier principal lors du lancement en mode texte.
+ * 
  * @author Achraf 
  */
 #include <stdio.h>

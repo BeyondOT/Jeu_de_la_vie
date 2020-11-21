@@ -28,7 +28,7 @@ void affiche_ligne (int c, int* ligne){
 void affiche_grille (grille g){
 	int i, l=g.nbl, c=g.nbc;
 
-	printf("\nVoisinage g->cycle : ");
+	printf("\nVoisinage cyclique: ");
     if (!g.cycle){
         printf("désactivé\n"); 
     }
@@ -86,6 +86,7 @@ void debut_jeu(grille *g, grille *gc){
 			}
 			case 'n' : 
 			{
+				printf("Entrez le chemin de la nouvelle grille : \n");
 				char filename[FILENAME_MAX];
 				scanf(" %s", filename);
 				libere_grille(g);

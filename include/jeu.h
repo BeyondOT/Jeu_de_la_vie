@@ -46,4 +46,6 @@ int compte_voisins_vivants_c (int i, int j, grille g);
  */
 void evolue (grille *g, grille *gc);
 
+int meme_grille (grille *g, grille *go);
+
 #endif

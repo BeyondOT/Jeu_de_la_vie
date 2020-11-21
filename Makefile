@@ -55,4 +55,4 @@ clean :
 dist :
 	tar -jcvf $(TARNAME) src include README.md Makefile Doxyfile
 run: 
-	./bin/JeuDeVie ./grilles/grille1.txt
+	./bin/JeuDeVie ./grilles/grille4.txt
